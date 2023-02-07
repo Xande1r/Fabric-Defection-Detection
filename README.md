@@ -7,5 +7,6 @@
 ### CPU : 12th Gen Intel(R) Core(TM) i7-12700H   2.70 GHz
 ### GPU : NVIDIA RTX3070Ti
 ### RAM : 32GB
+### Matlab R2020a (Deep Learning Tools)
 ### 注 ：Data文件过大 未上传
 # 1.CNN概述
