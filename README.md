@@ -51,10 +51,14 @@ imageDatastore()函数用于读取指定路径下的所有文件
 ImageDatastore(path,Name,Value)
 输入参数为文件（夹）路径，以及一些键值对，输出为一个ImageDatastore对象。
 
-第一个参数./images表示文件所在的路径；
-后续参数都是键值对（key-value）的形式
-includesubfolders：是否继续读取子文件夹中的图像数据；
-labelsource：图像 label 的来源是什么；
+imageDatastore
+作用：构建数据集
+语法：imds = imageDatastore('./images', 'IncludeSubfolders', true, 'labelsource', 'foldernames')
+
+./images： 表示文件所在的路径；
+Includesubfolders： 是否继续读取子文件夹中的图像数据，为 true 表示继续读取；
+labelsource： 图像 label 的来源是什么；
+foldernames： 文件夹名；
 ### 2.1.2显示类别数量
 tbl = countEachLabel(imds) ⇒ 见名知意，创建一个表格，某一label图像，及其对应的图像个数；
 
