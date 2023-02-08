@@ -36,7 +36,7 @@ imageDatastore()函数用于读取指定路径下的所有文件
 ImageDatastore(path,Name,Value)
 输入参数为文件（夹）路径，以及一些键值对，输出为一个ImageDatastore对象。
 
-
+IncludeSubfolders：通过imageDatastore中‘IncludeSubfolders’选项，可以将数据存储到指定文件夹下
 ### 2.1.2显示类别数量
 tbl = countEachLabel(imds) ⇒ 见名知意，创建一个表格，某一label图像，及其对应的图像个数；
 
