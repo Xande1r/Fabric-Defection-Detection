@@ -89,10 +89,23 @@ minSetCount = min(tbl{:,2});
 imds = splitEachLabel(imds, minSetCount, 'randomize');
 
 ### 2.1.5图像预处理，将图像转换
+ReadFcn - 用于读取图像数据的函数
+@readDatastoreImage（默认） | 函数句柄
+读取图像数据的函数，指定为函数句柄。函数必须将图像文件名称作为输入，然后输出对应的图像数据。例如，如果 customreader 是指定用来读取图像数据的函数，则它必须具有类似于以下内容的签名：
 
+function data = customreader(filename)
+...
+end
+如果有多个输出参数，则只使用第一个，而忽略其余参数。
 
 
 ### 2.1.6样本分割,随机抽取样本分割为7:3的训练集和验证集
+
+splitEachLabel：拆分数据集
+[imds1,imds2] = splitEachLabel(imds, p);
+
+p 可以是一个小数，表示百分比，根据百分比划分；
+也可以是一个整数，根据这一整数进行划分；
 
 
 # 三.缺陷检测
