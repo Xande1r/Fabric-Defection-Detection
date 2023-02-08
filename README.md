@@ -54,9 +54,13 @@ ImageDatastore(path,Name,Value)
 imageDatastore
 作用：构建数据集
 语法：imds = imageDatastore('./images', 'IncludeSubfolders', true, 'labelsource', 'foldernames')
+
 ./images： 表示文件所在的路径；
+
 Includesubfolders： 是否继续读取子文件夹中的图像数据，为 true 表示继续读取；
+
 labelsource： 图像 label 的来源是什么；
+
 foldernames： 文件夹名；
 ### 2.1.2显示类别数量
 tbl = countEachLabel(imds) ⇒ 见名知意，创建一个表格，某一label图像，及其对应的图像个数；
