@@ -122,14 +122,143 @@ p 可以是一个小数，表示百分比，根据百分比划分；
 
 从物理系统的 MATLAB 和 Simulink® 模型生成基于仿真的训练和测试数据。
 
-### 
+### 3.1.2 深度学习层: 使用以下函数创建不同层类型。或者，使用深度网络设计器以交互方式创建网络。
+
+#### 输入层
+
+imageInputLayer:图像输入层向网络输入二维图像，并应用数据归一化。
+
+image3dInputLayer:三维图像输入层向网络输入三维图像或三维体，并应用数据归一化。
+
+sequenceInputLayer:序列输入层向网络输入序列数。
+
+featureInputLayer:特征输入层将特征数据输入网络并应用数据归一化。当您有表示特征的数值标量数据集（数据没有空间和时间维度）时，请使用此层。
+
+roiInputLayer (Computer Vision Toolbox):ROI 输入层将图像输入到 Fast R-CNN 目标检测网络。
+
+#### 卷积和全连接层
+convolution2dLayer：二维卷积层对输入应用滑动卷积滤波器。
+
+convolution3dLayer：三维卷积层将滑动立方体卷积滤波器应用于三维输入。
+
+groupedConvolution2dLayer：二维分组卷积层将输入通道分成各个组，并应用滑动卷积滤波器。使用分组卷积层进行按通道可分离（也称为按深度可分离）卷积。
+
+transposedConv2dLayer：转置的二维卷积层对特征图进行上采样。
+
+transposedConv3dLayer：转置的三维卷积层对三维特征图进行上采样。
+
+fullyConnectedLayer：全连接层将输入乘以权重矩阵，然后添加偏置向量。
+
+#### 序列层
+sequenceInputLayer：序列输入层向网络输入序列数据。
+
+lstmLayer：LSTM学习时序和序列数据中时间步之间的长期相关性。
+
+bilstmLayer：双向 LSTM (BiLSTM) 层学习时序或序列数据的时间步之间的双向长期相关性。当您希望网络在每个时间步从完整时序中学习时，这些相关性会很有用。
+
+gruLayer：GRU 层学习时序和序列数据中时间步之间的相关性。
+
+sequenceFoldingLayer：序列折叠层将一批图像序列转换为一批图像。使用序列折叠层独立地对图像序列的时间步执行卷积运算。
+
+sequenceUnfoldingLayer：序列展开层在序列折叠后还原输入数据的序列结构。
+
+flattenLayer：扁平化层将输入的空间维度折叠成通道维度。
+
+wordEmbeddingLayer：(Text Analytics Toolbox)单词嵌入层将单词索引映射到向量。
+
+#### 激活层
+reluLayer：ReLU 层对输入的每个元素执行阈值运算，其中任何小于零的值都设置为零。
+
+leakyReluLayer：泄漏 ReLU 层执行阈值运算，其中小于零的任何输入值都乘以固定标量。
+
+clippedReluLayer：裁剪 ReLU 层执行阈值运算，其中任何小于零的输入值都设置为零，裁剪上限以上的任何值都设置为该裁剪上限。
+
+eluLayer：ELU 激活层对正输入执行单位运算，对负输入执行指数非线性运算。
+
+tanhLayer：双曲正切 (tanh) 激活层对层输入应用 tanh 函数。
+
+preluLayer（自定义层示例）：PReLU 层执行阈值运算，其中对于每个通道，任何小于零的输入值都乘以在训练时学习到的标量。
+#### 归一化、丢弃和裁剪层
+batchNormalizationLayer：批量归一化层对小批量中的每个输入通道进行归一化。为了加快卷积神经网络的训练并降低对网络初始化的敏感度，请在卷积层和非线性部分之间使用批量归一化层，如 ReLU 层。
+
+groupNormalizationLayer：组归一化层将输入数据的通道划分为若干组，并对每组中的激活进行归一化。为了加快卷积神经网络的训练并降低对网络初始化的敏感度，请在卷积层和非线性部分之间使用组归一化层，如 ReLU 层。通过设置适当的组数，可以执行实例归一化和层归一化。
+
+crossChannelNormalizationLayer：按通道局部响应（跨通道）归一化层执行按通道归一化。
+
+dropoutLayer：丢弃层以给定的概率将输入元素随机设置为零。
+
+crop2dLayer：二维裁剪层对输入应用二维裁剪。
+
+crop3dLayer：三维裁剪层将三维体裁剪到输入特征图的大小。
+
+resize2dLayer (Image Processing Toolbox)：二维调整大小层根据缩放因子或指定的高度和宽度调整二维输入的大小。
+
+resize3dLayer (Image Processing Toolbox)：三维调整大小层根据缩放因子或指定的高度、宽度和深度调整三维输入的大小。
+
+#### 池化和去池化层
+averagePooling2dLayer：平均池化层通过将输入划分为矩形池化区域并计算每个区域的平均值来执行下采样。
+
+averagePooling3dLayer：三维平均池化层通过将三维输入划分为立方体池化区域并计算每个区域的平均值来执行下采样。
+
+globalAveragePooling2dLayer：全局平均池化层通过计算输入的高度和宽度维度的均值来执行下采样。
+
+globalAveragePooling3dLayer：三维全局平均池化层通过计算输入的高度、宽度和深度维度的均值来执行下采样。
+
+maxPooling2dLayer：最大池化层通过将输入划分为矩形池化区域并计算每个区域的最大值来执行下采样。
+
+maxPooling3dLayer：三维最大池化层通过将三维输入划分为立方体池化区域并计算每个区域的最大值来执行下采样。
+
+globalMaxPooling2dLayer：全局最大池化层通过计算输入的高度和宽度维度的最大值来执行下采样。
+
+globalMaxPooling3dLayer：三维全局最大池化层通过计算输入的高度、宽度和深度维度的最大值来执行下采样。
+
+maxUnpooling2dLayer：最大去池化层对最大池化层的输出进行去池化。
+#### 组合层
+additionLayer：相加层按元素将来自多个神经网络层的输入相加。
+
+multiplicationLayer：相乘层按元素将来自多个神经网络层的输入相乘。
+
+depthConcatenationLayer：深度串联层接受具有相同高度和宽度的输入，并沿第三个维度（通道维度）串联它们。
+
+concatenationLayer：串联层接受输入并沿指定维度串联它们。除串联维度外，所有其他维度中的输入必须具有相同的大小。
+
+weightedAdditionLayer（自定义层示例）：加权相加层按元素对来自多个神经网络层的输入进行缩放和相加。
+
+输出层
+softmaxLayer：softmax 层对输入应用 softmax 函数。
+
+sigmoidLayer：sigmoid 层对输入应用 sigmoid 函数，使得输出在区间 (0,1) 内有界。
+
+classificationLayer：分类层计算具有互斥类的多类分类问题的交叉熵损失。
+
+regressionLayer：回归层计算回归问题的半均方误差损失。
+
+pixelClassificationLayer (Computer Vision Toolbox)：像素分类层为每个图像像素或体素提供分类标签。
+
+dicePixelClassificationLayer (Computer Vision Toolbox)：Dice 像素分类层使用广义 Dice 损失为每个图像像素或体素提供分类标签。
+
+focalLossLayer (Computer Vision Toolbox)：焦点损失层使用焦点损失预测目标类。
+
+rpnSoftmaxLayer (Computer Vision Toolbox)：区域提议网络 (RPN) softmax 层对输入应用 softmax 激活函数。使用此层创建一个 Faster R-CNN 目标检测网络。
+
+rpnClassificationLayer (Computer Vision Toolbox)：区域提议网络 (RPN) 分类层通过使用交叉熵损失函数将图像区域分类为目标或背景。使用此层创建一个 Faster R-CNN 目标检测网络。
+
+rcnnBoxRegressionLayer (Computer Vision Toolbox)：框回归层通过使用平滑 L1 损失函数来细化边界框位置。使用此层创建一个 Fast 或 Faster R-CNN 目标检测网络。
+
+weightedClassificationLayer：加权分类层计算分类问题的加权交叉熵损失。
+
+tverskyPixelClassificationLayer：Tversky 像素分类层使用 Tversky 损失为每个图像像素或体素提供分类标签。
+
+sseClassificationLayer：分类 SSE 层计算分类问题的误差损失平方和。
+
+maeRegressionLayer：回归 MAE 层计算回归问题的均值绝对误差损失。
 
 ## 3.2设计的神经网络结构如下图所示
 ### ![Image text](网络结构图.png)
 ### 本次搭建的CNN网络结构如图所示
 ### ![Image text](jiegou.png)
 ### 图像输入层：用于指定图像大小，在本此项目中为 128×128×3。这些数字对应于高度、宽度和通道大小。通道大小（颜色通道）为 3。对于灰度图像，通道大小为 3，对应于 RGB 值。
-### 卷积层：在三层卷积层中，第一层有8个3*3的卷积核，第二层有16个3*3的卷积核，第三层有32个3*3的卷积核。卷积层逐渐加深，不断提取输入图像的特征。
+### 卷积层：在三层卷积层中，第一层有8个3x3的卷积核，第二层有16个3x3的卷积核，第三层有32个3x3的卷积核。卷积层逐渐加深，不断提取输入图像的特征。
 ### 批量归一化层：批量归一化层对网络中的激活值和梯度传播进行归一化，使网络训练成为更简单的优化问题。在卷积层和非线性部分（例如 ReLU 层）之间使用批量归一化层，来加速网络训练并降低对网络初始化的敏感度。
 ### ReLU 层：批量归一化层后接一个非线性激活函数。最常见的激活函数是修正线性单元 (ReLU)。使用 reluLayer 创建 ReLU 层。
 ### 最大池化层：卷积层（带激活函数）有时会后跟下采样操作，以减小特征图的空间大小并删除冗余空间信息。通过下采样可以增加更深卷积层中的滤波器数量，而不会增加每层所需的计算量。下采样的一种方法是使用最大池化，在本次项目里，最大池化区域为[2，2]的矩形,步幅为3。
