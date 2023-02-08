@@ -69,15 +69,19 @@ tbl = countEachLabel(imds) ⇒ 见名知意，创建一个表格，某一label�
 ### 2.1.3图像的维度大小
 
 imread函数
-用法： A = imread(filename.fmt)     
+用法： A = imread(filename.fmt) 
+
 根据文件名filename读取灰度获彩色图像。返回的数组A包含图像数据。
 若文件包含灰色图像，A是M*N的数组；若文件名包含真彩图像，A是M*N*3的数组。
 
 ### 2.1.4为了使各类样本数量平衡选取数量最少的基准抽取样本
 minSetCount = min(tbl{:,2});
 返回数组的最小元素。
+
 如果 A 是向量，则 min(A) 返回 A 的最小值。
+
 如果 A 为矩阵，则 min(A) 是包含每一列的最小值的行向量。
+
 如果 A 是多维数组，则 min(A) 沿大小不等于 1 的第一个数组维度计算，并将这些元素视为向量。此维度的大小将变为 1，而所有其他维度的大小保持不变。如果 A 是第一个维度为 0 的空数组，则 min(A) 返回与 A 大小相同的空数组。
 
 imds = splitEachLabel(imds, minSetCount, 'randomize');
