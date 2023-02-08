@@ -282,6 +282,12 @@ mini-batch SGD算法虽然这种算法能够带来很好的训练速度，但是
 ### ![Image text](ScreenShots/image20230207121909.png)
 # 四.训练与测试
 ## 4.1特征维度
+### 情况1：64x64
+
+通过改变学习率来观察在此维度下哪个学习率能达到最好的效果
+学习率：0.001
+####![Image text]https://github.com/SDUwhhan/Fabric-Defection-Detection/blob/main/data01.png
+
 ## 4.2学习率
 ## 4.3正则化参数的选取
 ## 4.4性能对比
