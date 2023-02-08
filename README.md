@@ -54,7 +54,6 @@ ImageDatastore(path,Name,Value)
 imageDatastore
 作用：构建数据集
 语法：imds = imageDatastore('./images', 'IncludeSubfolders', true, 'labelsource', 'foldernames')
-
 ./images： 表示文件所在的路径；
 Includesubfolders： 是否继续读取子文件夹中的图像数据，为 true 表示继续读取；
 labelsource： 图像 label 的来源是什么；
