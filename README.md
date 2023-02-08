@@ -72,7 +72,9 @@ imread函数
 用法： A = imread(filename.fmt) 
 
 根据文件名filename读取灰度获彩色图像。返回的数组A包含图像数据。
-若文件包含灰色图像，A是M*N的数组；若文件名包含真彩图像，A是M*N*3的数组。
+若文件包含灰色图像，A是MxN的数组；若文件名包含真彩图像，A是MxNx3的数组。
+
+imds.Files：全部文件名构成的 cell 集合；
 
 ### 2.1.4为了使各类样本数量平衡选取数量最少的基准抽取样本
 minSetCount = min(tbl{:,2});
