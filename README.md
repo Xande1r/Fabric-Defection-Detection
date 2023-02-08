@@ -287,6 +287,10 @@ mini-batch SGD算法虽然这种算法能够带来很好的训练速度，但是
 通过改变学习率来观察在此维度下哪个学习率能达到最好的效果
 学习率：0.001
 #### ![Image text](results/64-64-3/data01.png)
+学习率：0.003
+#### ![Image text](results/64-64-3/data03.png)
+学习率：0.005
+#### ![Image text](results/64-64-3/data02.png)
 
 ## 4.2学习率
 ## 4.3正则化参数的选取
