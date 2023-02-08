@@ -124,6 +124,13 @@ p 可以是一个小数，表示百分比，根据百分比划分；
 ### 分类层：最终层是分类层。该层使用 softmax 激活函数针对每个输入返回的概率，将输入分配到其中一个互斥类并计算损失。
 ### 丢弃层：在代码中，我们以0.2的概率丢弃，防止出现过拟合的问题。
 ## 3.3 训练CNN网络
+### 3.3.1 SGDM (SGD with Momentum,带动量的随机梯度下降)
+mini-batch SGD算法虽然这种算法能够带来很好的训练速度，但是在到达最优点的时候并不能够总是真正到达最优点，而是在最优点附近徘徊。
+另一个缺点就是mini-batch SGD需要我们挑选一个合适的学习率，当我们采用小的学习率的时候，会导致网络在训练的时候收敛太慢；当我们采用大的学习率的时候，会导致在训练过程中优化的幅度跳过函数的范围，也就是可能跳过最优点。我们所希望的仅仅是网络在优化的时候网络的损失函数有一个很好的收敛速度同时又不至于摆动幅度太大。
+所以Momentum优化器刚好可以解决我们所面临的问题，它主要是基于梯度的移动指数加权平均，对网络的梯度进行平滑处理的，让梯度的摆动幅度变得更小。
+### ![Image text](https://img-blog.csdnimg.cn/20201216191041228.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNTA4NjE=,size_16,color_FFFFFF,t_70#pic_center)
+### ![Image text](https://img-blog.csdnimg.cn/2021031410310462.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTMyNTA4NjE=,size_16,color_FFFFFF,t_70#pic_center)
+### ![Image text](https://img-blog.csdnimg.cn/20210113210400439.gif#pic_center)
 ### 在本次项目中，我们运用了深度学习工具的绘图来实现可视化，如下图
 ### ![Image text](ScreenShots/image20230207121843.png)
 ### 定义网络结构体后，指定训练选项。使用具有动量的随机梯度下降 (SGDM) 训练网络，初始学习率为 0.001。将最大训练轮数设置为 16。将数据分为训练集和测试集，对构建好的CNN进行训练.
