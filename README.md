@@ -19,7 +19,10 @@ CNN的基本结构由输入层、卷积层（convolutional layer）、池化层�
 # 二.图像数据预处理
 ## 2.1处理步骤
 1.加载数据集
-
+imageDatastore()函数用于读取指定路径下的所有文件
+使用语法：
+ImageDatastore(path,Name,Value)
+输入参数为文件（夹）路径，以及一些键值对，输出为一个ImageDatastore对象。
 2.显示类别数量
 
 3.图像的维度大小
